@@ -80,7 +80,7 @@ Reshaping
 
 # Variables and Gradients
 
-Variable behavior is almost hte same as the Tensor, like you read above.Instead of passing torch tensors we can pass vvariables to the methods. The only difference is how we accumulate graddients in Variable
+Variable behavior is almost hte same as the Tensor, like you read above.Instead of passing torch tensors we can pass vvariables to the methods. The only difference is how we accumulate graddients in Variable.**Backward should only be called on scalar(one element tensor) or with gradient w.r.t variable**. So we usually take the mean or sum the expression to create a scalar and use backward on that.
 
     from torch.autograd import Variable
     a = Variable(torch.ones(2,2),requires_grad = True)
