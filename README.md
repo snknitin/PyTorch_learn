@@ -112,7 +112,7 @@ Variable behavior is almost hte same as the Tensor, like you read above.Instead 
 
         optimizer.zero_grad() 
     
-* In the training loop : Variables are passed. the values in variables are accessed using .data
+* In the training loop : Variables are passed. the values in variables are accessed using .data and we do loss.backward to get the gradients and also update the step in optimizer for each epoch
     
         # Calculate Loss
         loss = criterion(outputs, labels)
@@ -125,4 +125,25 @@ Variable behavior is almost hte same as the Tensor, like you read above.Instead 
 
         print('epoch {}, loss {}'.format(epoch, loss.data[0]))
         
+ * Save and load : To be memory efficient we save the parameters of the parameters
+ 
+        save_model = False
+        if save_model is True:
+            # Saves only parameters
+            # alpha & beta
+            torch.save(model.state_dict(), 'awesome_model.pkl')
+  
+        load_model = False
+        if load_model is True:
+            model.load_state_dict(torch.load('awesome_model.pkl'))
+
+
+* To use GPU for model : If you have a variable in your code put it on gpu
+
+        device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+        model.to(device)
         
+        or simply 
+        
+        if torch.cuda.is_available():
+            model.cuda()
