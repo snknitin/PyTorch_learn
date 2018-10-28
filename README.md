@@ -75,3 +75,27 @@ Reshaping
         
         
   **_ after the operation means an inplace modification  **     
+
+
+
+# Variables and Gradients
+
+Variable behavior is almost hte same as the Tensor, like you read above.Instead of passing torch tensors we can pass vvariables to the methods. The only difference is how we accumulate graddients in Variable
+
+    from torch.autograd import Variable
+    a = Variable(torch.ones(2,2),requires_grad = True)
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
