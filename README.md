@@ -194,3 +194,25 @@ S : stride
 For pooling
 
     O=W/K
+
+
+# RNN
+
+You'll need to create separate variables in the forward part of the model for the cell state and hidden layers. 28 timesteps means our feed forward nn repeats itself 28 times and each time our input dimension is 28. Unlike cnn where we give 28* 28 here at each time step we only feed in 28 pixels.
+
+         # batch_first=True causes input/output tensors to be of shape
+         # Output of RNN cell (batch_dim, seq_dim, input_dim)
+        self.rnn = nn.RNN(input_dim, hidden_dim, layer_dim, batch_first=True, nonlinearity='relu')
+         
+         # Initialize hidden state with zeros
+         # (layer_dim, batch_size, hidden_dim) where layer_dim is number of hidden layers
+        h0 = Variable(torch.zeros(self.layer_dim, x.size(0), self.hidden_dim))
+        
+         # The out would have all 28(MNIST) timesteps
+        out, hn = self.rnn(x, h0)
+        
+         # Index hidden state of last time step
+         # out.size() --> 100, 28, 10
+         # out[:, -1, :] --> 100, 10 --> just want last time step hidden states! 
+        out = self.fc(out[:, -1, :]) 
+         # out.size() --> 100, 10
