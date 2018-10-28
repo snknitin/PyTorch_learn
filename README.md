@@ -160,4 +160,4 @@ Variable behavior is almost hte same as the Tensor, like you read above.Instead 
         - 1 iteration: one mini-batch forward & backward pass
     - **epochs**
         - 1 epoch: running through the whole dataset once
-        - $epochs = iterations \div \frac{totaldata}{minibatch} = 3000 \div \frac{60000}{100} = 5 $
+        - num_epochs = iterations / (totaldata/minibatch) = 3000/{60000}/{100} = 5 
