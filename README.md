@@ -27,8 +27,14 @@ Torch cannot convert all types of numpy arrays to tensor. The only supported dat
 So if the dtype of your numpy array is np.int8, then you'll get an error  
 
 
-    torch.from_numpy(np_array)  # This will convert the nd array into torch.DoubleTensor by default
-    
-    torch_tensor.numpy() # Converts the torch tensor to a numpy nd array
+        torch.from_numpy(np_array)  # This will convert the nd array into torch.DoubleTensor by default
+
+        torch_tensor.numpy() # Converts the torch tensor to a numpy nd array
 
 # CPU to GPU
+
+When you use gpu to accelerate your model, every tensor must be on gpu
+
+        tensor_cpu.cuda() # Moves to gpu
+        tensor_cpu.cpu()  # Moves to cpu. This is the default 
+        
