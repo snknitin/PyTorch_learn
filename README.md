@@ -37,7 +37,8 @@ When you use gpu to accelerate your model, every tensor must be on gpu
 
         tensor_cpu.cuda() # Moves to gpu
         tensor_cpu.cpu()  # Moves to cpu. This is the default 
-        
+      
+      
 # Basic math
 
 Reshaping
@@ -149,3 +150,14 @@ Variable behavior is almost hte same as the Tensor, like you read above.Instead 
             model.cuda()
 
 * Check if cuda is available and also add all tensors inside the variable on cuda using the .cuda() as both model and Variables need to be on gpu
+
+
+* Aim: make the dataset iterable
+    - **totaldata**: 60000
+    - **minibatch**: 100
+        - Number of examples in 1 iteration
+    - **iterations**: 3000
+        - 1 iteration: one mini-batch forward & backward pass
+    - **epochs**
+        - 1 epoch: running through the whole dataset once
+        - $epochs = iterations \div \frac{totaldata}{minibatch} = 3000 \div \frac{60000}{100} = 5 $
