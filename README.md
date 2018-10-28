@@ -198,7 +198,11 @@ For pooling
 
 # RNN
 
-You'll need to create separate variables in the forward part of the model for the cell state and hidden layers. 28 timesteps means our feed forward nn repeats itself 28 times and each time our input dimension is 28. Unlike cnn where we give 28* 28 here at each time step we only feed in 28 pixels. so input_dim is 28
+You'll need to create separate variables in the forward part of the model for the cell state and hidden layers. 28 timesteps means our feed forward nn repeats itself 28 times and each time our input dimension is 28. Unlike cnn where we give 28* 28 here at each time step we only feed in 28 pixels. so input_dim is 28  
+
+RNN Input: (1, 28)  
+CNN Input: (1, 28, 28)  
+FNN Input: (1, 28*28)   
 
          # batch_first=True causes input/output tensors to be of shape
          # Output of RNN cell (batch_dim, seq_dim, input_dim)
