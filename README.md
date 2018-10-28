@@ -86,11 +86,7 @@ Variable behavior is almost hte same as the Tensor, like you read above.Instead 
     a = Variable(torch.ones(2,2),requires_grad = True)
     
     
-    
-    
-    
-    
-    
+
     
     
     
