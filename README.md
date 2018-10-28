@@ -103,8 +103,26 @@ Variable behavior is almost hte same as the Tensor, like you read above.Instead 
                 out = self.linear(x)
                 return out
     
-  * 
-         
+* After instantiating this class as model set loss and optimizer
+
+        criterion = nn.MSELoss()
+        optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate)
     
+* Make sure to reinitialize the gradients each epoch dduring training
+
+        optimizer.zero_grad() 
     
+* In the training loop : Variables are passed. the values in variables are accessed using .data
     
+        # Calculate Loss
+        loss = criterion(outputs, labels)
+
+        # Getting gradients w.r.t. parameters
+        loss.backward()
+
+        # Updating parameters
+        optimizer.step()
+
+        print('epoch {}, loss {}'.format(epoch, loss.data[0]))
+        
+        
