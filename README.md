@@ -88,10 +88,23 @@ Variable behavior is almost hte same as the Tensor, like you read above.Instead 
     
 
     
+ # Useful code tips
+ 
+ 
+* Create Model Class: It needs to inherit from the nn.Module, so we use super. Each model needs a forward method
+ 
+         import torch.nn as nn
+         class LinearRegressionModel(nn.Module):
+            def __init__(self, input_dim, output_dim):
+                super(LinearRegressionModel, self).__init__()
+                self.linear = nn.Linear(input_dim, output_dim)  
+
+            def forward(self, x):
+                out = self.linear(x)
+                return out
     
-    
-    
-    
+  * 
+         
     
     
     
