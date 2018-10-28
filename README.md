@@ -148,4 +148,4 @@ Variable behavior is almost hte same as the Tensor, like you read above.Instead 
         if torch.cuda.is_available():
             model.cuda()
 
-* Check if cuda is available and also add all tensors inside the variable on cuda using the .cuda()
+* Check if cuda is available and also add all tensors inside the variable on cuda using the .cuda() as both model and Variables need to be on gpu
