@@ -177,19 +177,19 @@ Variable behavior is almost hte same as the Tensor, like you read above.Instead 
 
 Padding Summary:
 
-- Valid Padding (Zero Padding) : Output size < Input Size
-- Same Padding : Output size = Input Size
+- Valid Padding (Zero Padding) : Output size < Input Size  
+- Same Padding : Output size = Input Size  
 
 Dimension Calculations
 
     O=((W−K+2P)/S)+1
     
-O : output height/length
-W : input height/length
-K : filter size (kernel size)
-P : padding
-P= (K−1)/2
-S : stride
+O : output height/length   
+W : input height/length   
+K : filter size (kernel size)   
+P : padding  
+P= (K−1)/2  
+S : stride  
 
 For pooling
 
