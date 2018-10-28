@@ -137,7 +137,8 @@ Variable behavior is almost hte same as the Tensor, like you read above.Instead 
         load_model = False
         if load_model is True:
             model.load_state_dict(torch.load('awesome_model.pkl'))
-
+            
+            
 
 * To use GPU for model : If you have a variable in your code put it on gpu
 
@@ -169,3 +170,27 @@ Variable behavior is almost hte same as the Tensor, like you read above.Instead 
                 # Check if it is actaully an iterable
                 import collections
                 isinstance(train_loader, collections.Iterable)
+
+
+
+# CNN
+
+Padding Summary:
+
+- Valid Padding (Zero Padding) : Output size < Input Size
+- Same Padding : Output size = Input Size
+
+Dimension Calculations
+
+    O=((W−K+2P)/S)+1
+    
+O : output height/length
+W : input height/length
+K : filter size (kernel size)
+P : padding
+P= (K−1)/2
+S : stride
+
+For pooling
+
+    O=W/K
