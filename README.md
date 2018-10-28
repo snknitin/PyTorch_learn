@@ -163,6 +163,6 @@ Variable behavior is almost hte same as the Tensor, like you read above.Instead 
         - num_epochs = iterations / (totaldata/minibatch) = 3000/{60000}/{100} = 5 
 
 
-            train_loader = torch.utils.data.DataLoader(dataset=train_dataset, 
+                    train_loader = torch.utils.data.DataLoader(dataset=train_dataset, 
                                                        batch_size=batch_size, 
                                                        shuffle=True)
