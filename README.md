@@ -52,11 +52,6 @@ Reshaping
         torch.add(a,b)  # Both are similar
         c.add_(a)  #  This is inplace addition
         
-        
-        c = a+b
-        c = torch.add(a,b)  # Both are similar
-        a.add_(b)  #  This is inplace addition
-        
         a-b
         a.sub(b)  # Both are similar
         a.sub_(a)  #  This is inplace subtraction and will modify the original tensor
@@ -81,10 +76,12 @@ Reshaping
 
 # Variables and Gradients
 
-Variable behavior is almost hte same as the Tensor, like you read above.Instead of passing torch tensors we can pass vvariables to the methods. The only difference is how we accumulate graddients in Variable.**Backward should only be called on scalar(one element tensor) or with gradient w.r.t variable**. So we usually take the mean or sum the expression to create a scalar and use backward on that.
+Variable behavior is almost the same as the Tensor, like you read above. Instead of passing torch tensors we can pass variables to the methods. The only difference is how we accumulate gradients in Variable. 
 
-    from torch.autograd import Variable
-    a = Variable(torch.ones(2,2),requires_grad = True)
+* **Backward should only be called on scalar(one element tensor) or with gradient w.r.t variable**. So we usually take the mean or sum the expression to create a scalar and use backward on that. Like cost function.
+
+        from torch.autograd import Variable
+        a = Variable(torch.ones(2,2),requires_grad = True)
     
     
 
@@ -92,7 +89,7 @@ Variable behavior is almost hte same as the Tensor, like you read above.Instead 
  # Useful code tips
  
  
-* Create Model Class: It needs to inherit from the nn.Module, so we use super. Each model needs a forward method
+* **Create Model Class:** It needs to inherit from the nn.Module, so we use super. Each model needs a forward method
  
          import torch.nn as nn
          class LinearRegressionModel(nn.Module):
@@ -109,11 +106,11 @@ Variable behavior is almost hte same as the Tensor, like you read above.Instead 
         criterion = nn.MSELoss()
         optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate)
     
-* Make sure to reinitialize the gradients each epoch dduring training
+* **Make sure to re-initialize the gradients each epoch during training**
 
         optimizer.zero_grad() 
     
-* In the training loop : Variables are passed. the values in variables are accessed using .data and we do loss.backward to get the gradients and also update the step in optimizer for each epoch
+* In the training loop : Variables are passed. The values in variables are accessed using **.data** and we do **loss.backward** to get the gradients and also update the step in optimizer for each epoch
     
         # Calculate Loss
         loss = criterion(outputs, labels)
@@ -126,7 +123,7 @@ Variable behavior is almost hte same as the Tensor, like you read above.Instead 
 
         print('epoch {}, loss {}'.format(epoch, loss.data[0]))
         
- * Save and load : To be memory efficient we save the parameters of the parameters
+ * **Save and load :** To be memory efficient we save the parameters of the parameters
  
         save_model = False
         if save_model is True:
@@ -140,7 +137,7 @@ Variable behavior is almost hte same as the Tensor, like you read above.Instead 
             
             
 
-* To use GPU for model : If you have a variable in your code put it on gpu
+* **To use GPU for model** : If you have a variable in your code put it on gpu
 
         device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
         model.to(device)
@@ -150,10 +147,10 @@ Variable behavior is almost hte same as the Tensor, like you read above.Instead 
         if torch.cuda.is_available():
             model.cuda()
 
-* Check if cuda is available and also add all tensors inside the variable on cuda using the .cuda() as both model and Variables need to be on gpu
+*Check if cuda is available and also add all tensors inside the variable on cuda using the .cuda() as both model and Variables need to be on gpu*
 
 
-* Aim: make the dataset iterable
+* **Aim: make the dataset iterable**
     - **totaldata**: 60000
     - **minibatch**: 100
         - Number of examples in 1 iteration
